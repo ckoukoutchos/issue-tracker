@@ -19,6 +19,7 @@ const Login = ({ apiError, loading, getRepos }) => {
     event.preventDefault();
     getRepos(githubApiKey);
   }
+
   if (loading) {
     return <Spinner />
   } else {

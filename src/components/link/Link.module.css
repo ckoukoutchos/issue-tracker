@@ -1,0 +1,15 @@
+.link {
+  color: #3056ba;
+  cursor: pointer;
+  display: flex;
+  font-size: 13px;
+  font-weight: 600;
+  height: 20px;
+  justify-content: space-between;
+  margin: 4px;
+}
+
+.icon {
+  fill: currentcolor;
+  width: 10px;
+}

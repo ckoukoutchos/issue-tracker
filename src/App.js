@@ -4,6 +4,7 @@ import { fetchRepos } from './redux/actions';
 import styles from './App.module.css';
 import Login from './components/login/Login';
 import TopBar from './components/top-bar/TopBar';
+import Repos from './components/repos/Repos';
 
 const App = ({ apiKey, getRepos }) => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const App = ({ apiKey, getRepos }) => {
     <div>
       <TopBar />
       {!apiKey && <Login />}
+      {apiKey && <Repos />}
     </div>
   );
 }

@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './Input.module.css';
 
-const Input = (props) => {
-  const { onChange, label, name, placeHolder, type, value } = props;
-
+const Input = ({ onChange, label, name, placeHolder, type, value }) => {
   return <div className={styles.container}>
     <label className={styles.label} htmlFor={name} >{label}</label>
     <input

@@ -3,7 +3,8 @@ import { FETCH_REPOS, FETCH_REPOS_SUCCESS, FETCH_REPOS_FAIL } from '../actionTyp
 const initialState = {
   error: null,
   loading: false,
-  repos: []
+  repos: [],
+  selectedRepo: null
 };
 
 export default (state = initialState, action) => {
@@ -17,8 +18,9 @@ export default (state = initialState, action) => {
 
     case FETCH_REPOS_SUCCESS: {
       const repos = action.repos.map(repo => ({
+        id: repo.id,
         owner: repo.owner.login,
-        repo: repo.name
+        name: repo.name
       }));
 
       return {
