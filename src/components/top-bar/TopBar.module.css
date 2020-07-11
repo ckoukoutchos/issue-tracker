@@ -1,0 +1,12 @@
+.topBar {
+  background-color: #6170ff;
+  box-shadow: 0 4px 4px 0 rgba(77, 92, 113, 0.16);
+  height: 48px;
+}
+
+.title {
+  color: #ffffff;
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
+}
