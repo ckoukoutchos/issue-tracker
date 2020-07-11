@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import { fetchRepos } from '../../redux/actions';
 import styles from './Login.module.css';
 import Button from '../button/Button';
 import Form from '../form/Form';
 import Input from '../input/Input';
 
-const Login = (props) => {
+const Login = ({ apiError, loading, getRepos }) => {
   const [githubApiKey, setGithubApiKey] = useState('');
 
   const inputHandler = (event) => {
@@ -14,9 +16,12 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    getRepos(githubApiKey);
   }
 
   return <Form onSubmit={submitHandler} >
+    {apiError && <p className={styles.error}>{apiError}</p>}
+
     <Input
       onChange={inputHandler}
       label="GitHub API Key"
@@ -29,4 +34,13 @@ const Login = (props) => {
   </Form>
 }
 
-export default Login;
+const mapStateToProps = state => ({
+  apiError: state.repos.error,
+  loading: state.repos.loading
+});
+
+const mapDispatchToProps = dispatch => ({
+  getRepos: (apiKey) => dispatch(fetchRepos(apiKey))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
