@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { fetchRepos } from '../../redux/actions';
 import styles from './Login.module.css';
 import Button from '../button/Button';
 import Form from '../form/Form';
 import Input from '../input/Input';
+import Spinner from '../spinner/Spinner';
 
 const Login = ({ apiError, loading, getRepos }) => {
   const [githubApiKey, setGithubApiKey] = useState('');
@@ -18,20 +19,23 @@ const Login = ({ apiError, loading, getRepos }) => {
     event.preventDefault();
     getRepos(githubApiKey);
   }
+  if (loading) {
+    return <Spinner />
+  } else {
+    return <Form onSubmit={submitHandler} >
+      {apiError && <p className={styles.error}>{apiError}</p>}
 
-  return <Form onSubmit={submitHandler} >
-    {apiError && <p className={styles.error}>{apiError}</p>}
-
-    <Input
-      onChange={inputHandler}
-      label="GitHub API Key"
-      name="apikey"
-      placeHolder="API Key"
-      type="text"
-      value={githubApiKey}
-    />
-    <Button type="Submit">Submit</Button>
-  </Form>
+      <Input
+        onChange={inputHandler}
+        label="GitHub API Key"
+        name="apikey"
+        placeHolder="API Key"
+        type="text"
+        value={githubApiKey}
+      />
+      <Button type="Submit">Submit</Button>
+    </Form>
+  }
 }
 
 const mapStateToProps = state => ({

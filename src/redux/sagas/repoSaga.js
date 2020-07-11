@@ -1,6 +1,6 @@
 import { put, all, takeEvery } from 'redux-saga/effects';
 import { FETCH_REPOS } from '../actionTypes';
-import { fetchReposSuccess, fetchReposFail } from '../actions';
+import { fetchReposSuccess, fetchReposFail, setApiKey } from '../actions';
 import { reposUrl } from './apiUrls';
 
 export default function* watchRepo() {
@@ -23,6 +23,8 @@ function* fetchReposSaga({ apiKey }) {
     }
 
     const repos = yield response.json();
+    yield sessionStorage.setItem('key', apiKey);
+    yield put(setApiKey(apiKey));
     yield put(fetchReposSuccess(repos));
 
   } catch (error) {

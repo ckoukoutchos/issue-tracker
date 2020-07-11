@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { fetchRepos } from './redux/actions';
 import styles from './App.module.css';
 import Login from './components/login/Login';
-import Spinner from './components/spinner/Spinner';
 import TopBar from './components/top-bar/TopBar';
 
-const App = () => {
+const App = ({ apiKey, getRepos }) => {
+  useEffect(() => {
+    const apiKey = sessionStorage.getItem('key');
+    if (apiKey) {
+      getRepos(apiKey);
+    }
+  }, [getRepos]);
+
   return (
     <div>
       <TopBar />
-      <Spinner />
-      <Login />
+      {!apiKey && <Login />}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  apiKey: state.session.apiKey
+});
+
+const mapDispatchToProps = dispatch => ({
+  getRepos: (apiKey) => dispatch(fetchRepos(apiKey))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
