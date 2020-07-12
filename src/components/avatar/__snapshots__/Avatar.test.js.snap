@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the Avatar component correctly 1`] = `
+<img
+  alt="user avatar"
+  className="avatar"
+  src="http://madupsite.com"
+/>
+`;
+
+exports[`renders the Card component correctly 1`] = `
+<img
+  alt="user avatar"
+  className="avatar"
+  src="http://madupsite.com"
+/>
+`;
