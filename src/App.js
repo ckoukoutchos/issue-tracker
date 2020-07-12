@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchRepos } from './redux/actions';
 import styles from './App.module.css';
+import Issues from './components/issues/Issues';
 import Login from './components/login/Login';
 import TopBar from './components/top-bar/TopBar';
 import Repos from './components/repos/Repos';
 
-const App = ({ apiKey, getRepos }) => {
+const App = ({ apiKey, selectedRepo, getRepos }) => {
   useEffect(() => {
     const apiKey = sessionStorage.getItem('key');
     if (apiKey) {
@@ -19,12 +20,14 @@ const App = ({ apiKey, getRepos }) => {
       <TopBar />
       {!apiKey && <Login />}
       {apiKey && <Repos />}
+      {selectedRepo && <Issues />}
     </div>
   );
 }
 
 const mapStateToProps = state => ({
-  apiKey: state.session.apiKey
+  apiKey: state.session.apiKey,
+  selectedRepo: state.repos.selectedRepo
 });
 
 const mapDispatchToProps = dispatch => ({

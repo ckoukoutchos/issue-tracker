@@ -1,4 +1,4 @@
-import { FETCH_REPOS, FETCH_REPOS_SUCCESS, FETCH_REPOS_FAIL } from '../actionTypes';
+import { FETCH_REPOS, FETCH_REPOS_SUCCESS, FETCH_REPOS_FAIL, SET_SELECTED_REPO } from '../actionTypes';
 
 const initialState = {
   error: null,
@@ -35,6 +35,12 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error
+      };
+    }
+    case SET_SELECTED_REPO: {
+      return {
+        ...state,
+        selectedRepo: action.repo
       };
     }
     default:
