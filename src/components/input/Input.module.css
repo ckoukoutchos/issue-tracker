@@ -7,11 +7,12 @@
   border: 1px solid #d3dcf4;
   border-radius: 6px;
   color: #4d5c71;
+  font-size: 14px;
   padding: 10px 14px;
 }
 
 .label {
   margin-bottom: 12px;
-  font-size: 13px;
+  font-size: 14px;
   color: #4d5c71;
 }

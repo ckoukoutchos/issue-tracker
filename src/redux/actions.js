@@ -6,7 +6,9 @@ import {
   FETCH_ISSUES,
   FETCH_ISSUES_SUCCESS,
   FETCH_ISSUES_FAIL,
-  SET_SELECTED_REPO
+  SET_SELECTED_REPO,
+  UPDATE_ISSUES_ORDER,
+  UPDATE_ISSUES_SUCCESS
 } from "./actionTypes";
 
 export const fetchIssues = (apiKey, repo) => ({
@@ -48,4 +50,15 @@ export const setApiKey = (apiKey) => ({
 export const setSelectedRepo = (repo) => ({
   type: SET_SELECTED_REPO,
   repo
+});
+
+export const updateIssuesOrder = (issues, repoId) => ({
+  type: UPDATE_ISSUES_ORDER,
+  issues,
+  repoId
+});
+
+export const updateIssuesSuccess = (issues) => ({
+  type: UPDATE_ISSUES_SUCCESS,
+  issues
 });

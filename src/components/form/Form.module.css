@@ -5,5 +5,17 @@
   box-shadow: 0 4px 4px 0 rgba(77, 92, 113, 0.16);
   padding: 24px 16px;
   margin: 24px auto;
-  width: 280px;
+  width: 350px;
+}
+
+@media (max-width: 550px) {
+  .form {
+    background: #f6f8ff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 4px 4px 0 rgba(77, 92, 113, 0.16);
+    box-shadow: 0 4px 4px 0 rgba(77, 92, 113, 0.16);
+    padding: 24px 16px;
+    margin: 24px auto;
+    width: 280px;
+  }
 }

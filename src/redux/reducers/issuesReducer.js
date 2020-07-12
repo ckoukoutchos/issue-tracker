@@ -1,4 +1,4 @@
-import { FETCH_ISSUES, FETCH_ISSUES_SUCCESS, FETCH_ISSUES_FAIL } from '../actionTypes';
+import { FETCH_ISSUES, FETCH_ISSUES_SUCCESS, FETCH_ISSUES_FAIL, UPDATE_ISSUES_SUCCESS } from '../actionTypes';
 import { dateFormatter, timeSinceFormatter } from '../../utils/timeFormatter';
 
 const initialState = {
@@ -36,6 +36,13 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.error
+      };
+    }
+    case UPDATE_ISSUES_SUCCESS: {
+      return {
+        ...state,
+        loading: false,
+        issues: action.issues
       };
     }
     default:

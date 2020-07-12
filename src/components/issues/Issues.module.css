@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+}
+
+.header {
+  color: #1b2c48;
+  font-size: 20px;
+  line-height: 24px;
+  opacity: 0.8;
+  margin: 8px;
+  text-align: center;
+}
+
+.placeholder {
+  width: 325px;
+}
+
+.text {
+  color: #4d5c71;
+  margin: 8px;
+}
+
+.title {
+  color: #4d5c71;
+  font-weight: 600;
+  margin: 8px;
+}

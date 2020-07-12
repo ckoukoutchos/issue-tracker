@@ -6,7 +6,8 @@
   font-weight: 600;
   height: 20px;
   justify-content: space-between;
-  margin: 4px;
+  margin: 0;
+  padding: 8px;
 }
 
 .icon {

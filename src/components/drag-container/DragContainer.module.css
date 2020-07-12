@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+}
+
+.text {
+  color: #4d5c71;
+  margin: 8px;
+}
+
+.title {
+  color: #4d5c71;
+  font-weight: 600;
+  margin: 8px;
+}

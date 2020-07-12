@@ -9,15 +9,21 @@ import Spinner from '../spinner/Spinner';
 
 const Login = ({ apiError, loading, getRepos }) => {
   const [githubApiKey, setGithubApiKey] = useState('');
+  const [inputError, setInputError] = useState(false);
 
   const inputHandler = (event) => {
     const value = event.target.value;
-    setGithubApiKey(value)
+    setGithubApiKey(value);
+    setInputError(false);
   }
 
   const submitHandler = (event) => {
     event.preventDefault();
-    getRepos(githubApiKey);
+    if (!githubApiKey.length) {
+      setInputError(true);
+    } else {
+      getRepos(githubApiKey);
+    }
   }
 
   if (loading) {
@@ -25,12 +31,13 @@ const Login = ({ apiError, loading, getRepos }) => {
   } else {
     return <Form onSubmit={submitHandler} >
       {apiError && <p className={styles.error}>{apiError}</p>}
+      {inputError && <p className={styles.error}>Must be valid key</p>}
 
       <Input
         onChange={inputHandler}
-        label="GitHub API Key"
+        label="Enter API key for choosen user"
         name="apikey"
-        placeHolder="API Key"
+        placeHolder="GitHub API Key"
         type="text"
         value={githubApiKey}
       />

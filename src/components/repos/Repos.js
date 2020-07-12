@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { fetchRepos, fetchIssues } from '../../redux/actions';
 import Card from '../card/Card';
 import Link from '../link/Link';
-import styles from './Repos.module.css';
 
-const Repos = ({ apiKey, repos, getIssues }) => {
+const Repos = ({ apiKey, repos, selectedRepo, getIssues }) => {
   const onRepoClick = (repo) => {
     getIssues(apiKey, repo);
   }
 
   const repoCards = repos.map((repo) => {
-    return <Card key={repo.id}>
+    const selected = selectedRepo ? selectedRepo.id === repo.id : false;
+
+    return <Card key={repo.id} selected={selected}>
       <Link onClick={() => onRepoClick(repo)}>
         {`${repo.owner}/${repo.name}`}
       </Link>
@@ -25,6 +26,7 @@ const Repos = ({ apiKey, repos, getIssues }) => {
 
 const mapStateToProps = state => ({
   repos: state.repos.repos,
+  selectedRepo: state.repos.selectedRepo,
   apiKey: state.session.apiKey
 });
 

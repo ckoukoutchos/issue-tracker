@@ -19,8 +19,10 @@ const App = ({ apiKey, selectedRepo, getRepos }) => {
     <div>
       <TopBar />
       {!apiKey && <Login />}
-      {apiKey && <Repos />}
-      {selectedRepo && <Issues />}
+      <div className={styles.container}>
+        {apiKey && <Repos />}
+        {selectedRepo && <Issues />}
+      </div>
     </div>
   );
 }
